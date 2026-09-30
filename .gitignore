@@ -1,0 +1,27 @@
+# Dependencias y builds
+node_modules/
+**/node_modules/
+dist/
+build/
+target/
+!**/src/main/**/target/
+
+# Secretos y configuración local (NUNCA subir)
+backend/src/main/resources/application-local.properties
+backend/src/main/resources/firebase-service-account.json
+**/firebase-service-account*.json
+.env
+.env.*
+*.pem
+
+# Sistema / IDE
+.DS_Store
+**/.DS_Store
+.idea/
+.vscode/
+*.iml
+*.log
+HELP.md
+gabi_src.tgz
+_backup_*.tgz
+gabi_*.tgz
