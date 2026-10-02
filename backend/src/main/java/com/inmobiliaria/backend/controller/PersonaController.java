@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController                          // Esta clase responde con JSON
 @RequestMapping("/api/personas")         // Todas las rutas empiezan con /api/personas
-@CrossOrigin(origins = "http://localhost:5173") // Permite pedidos desde React
 public class PersonaController {
 
     @Autowired
@@ -32,17 +31,25 @@ public class PersonaController {
     // POST /api/personas → crea nueva persona con los datos del body
     @PostMapping
     public Persona crear(@RequestBody Persona persona) {
-        return service.guardar(persona);
+        return service.crear(persona);
     }
 
     // PUT /api/personas/5 → actualiza persona con id=5
     @PutMapping("/{id}")
     public ResponseEntity<Persona> actualizar(@PathVariable Integer id,
                                                @RequestBody Persona persona) {
-        return service.buscarPorId(id).map(p -> {
-            persona.setIdPersona(id);
-            return ResponseEntity.ok(service.guardar(persona));
-        }).orElse(ResponseEntity.notFound().build());
+        return service.actualizar(id, persona)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // POST /api/personas/5/notas → agrega una nota al historial de la persona
+    @PostMapping("/{id}/notas")
+    public ResponseEntity<?> agregarNota(@PathVariable Integer id,
+                                         @RequestBody java.util.Map<String, String> body) {
+        return service.agregarNota(id, body.get("texto"))
+            .<ResponseEntity<?>>map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 
     // DELETE /api/personas/5 → elimina persona con id=5

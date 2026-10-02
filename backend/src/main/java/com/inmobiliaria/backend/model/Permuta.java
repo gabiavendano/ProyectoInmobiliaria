@@ -33,5 +33,5 @@ public class Permuta {
     @Column(name = "moneda_diferencia")
     private Moneda monedaDiferencia = Moneda.USD;
 
-    public enum Moneda { ARS, USD }
+    public enum Moneda { ARS, USD, EUR }
 }

@@ -1,0 +1,263 @@
+/* src/components/publico/MapaInteractivo.css */
+
+/* VARIABLES GLOBALES Y TEMA CLARO */
+.public-app-body {
+    --color-rojo: #D32F2F; --color-rojo-hover: #B71C1C; 
+    --color-blanco: #FFFFFF; --color-negro: #1A1A1A; --color-negro-claro: #333333;
+    --color-gris-fondo: #F7F9FC; --color-gris-borde: #E2E8F0; --color-gris-texto: #64748B;
+    --color-whatsapp: #25D366; --color-fav: #FF3366; 
+    --sombra-flat: 0 8px 24px rgba(0,0,0,0.06); --sombra-hover: 0 12px 32px rgba(0,0,0,0.12);
+    --border-radius: 12px; --topbar-height: 80px;
+    
+    background-color: var(--color-gris-fondo); color: var(--color-negro);
+    display: flex; flex-direction: column; height: 100vh; width: 100vw; overflow: hidden; font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* TEMA OSCURO (DARK MODE COMPLETO) */
+.public-app-body.dark-theme {
+    --color-blanco: #1E293B; --color-negro: #F8FAFC; --color-negro-claro: #CBD5E1;
+    --color-gris-fondo: #0F172A; --color-gris-borde: #334155; --color-gris-texto: #94A3B8;
+    --sombra-flat: 0 8px 24px rgba(0,0,0,0.4); --sombra-hover: 0 12px 32px rgba(0,0,0,0.6);
+}
+
+.public-app-body * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+h1, h2, h3, h4 { color: var(--color-negro); }
+
+/* TOPBAR */
+.public-app-body .topbar { height: var(--topbar-height); background-color: var(--color-blanco); border-bottom: 1px solid var(--color-gris-borde); display: flex; align-items: center; justify-content: space-between; padding: 0 30px; z-index: 1100; position: relative; transition: all 0.3s; }
+.public-app-body .topbar-left { display: flex; align-items: center; gap: 15px; width: 250px; }
+.public-app-body .topbar-left img.topbar-logo { height: 50px; width: auto; object-fit: contain; border-radius: 6px; }
+.public-app-body .brand-title { font-size: 1.2rem; font-weight: 700; color: var(--color-negro); letter-spacing: -0.5px;}
+.public-app-body .topbar-center { display: flex; gap: 5px; background: var(--color-gris-fondo); padding: 5px; border-radius: 30px; border: 1px solid var(--color-gris-borde); }
+.public-app-body .nav-btn { padding: 10px 20px; border: none; background: transparent; border-radius: 25px; font-weight: 600; font-size: 0.9rem; color: var(--color-gris-texto); cursor: pointer; transition: all 0.25s ease; display: flex; align-items: center; gap: 8px; }
+.public-app-body .nav-btn:hover { color: var(--color-negro); }
+.public-app-body .nav-btn.active { background: var(--color-blanco); color: var(--color-rojo); box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.public-app-body .topbar-right { width: 250px; display: flex; justify-content: flex-end; align-items: center; }
+
+/* BOTONES GLOBALES Y FORMULARIOS */
+.public-app-body .btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.95rem; transition: all 0.2s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; text-decoration: none; }
+.public-app-body .btn-negro { background-color: var(--color-negro); color: var(--color-blanco); }
+.public-app-body .btn-negro:hover { opacity: 0.9; box-shadow: var(--sombra-flat); }
+.public-app-body .btn-rojo { background-color: var(--color-rojo); color: #fff; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.public-app-body .btn-outline { background-color: var(--color-blanco); border: 1px solid var(--color-gris-borde); color: var(--color-negro); }
+.public-app-body .btn-dark-mode { background: transparent; border: none; font-size: 1.3rem; color: var(--color-gris-texto); cursor: pointer; transition: color 0.3s; }
+.public-app-body .btn-dark-mode:hover { color: var(--color-negro); }
+.public-app-body .form-input { width: 100%; padding: 12px 15px; margin-bottom: 15px; border: 1px solid var(--color-gris-borde); border-radius: 8px; font-family: inherit; background: var(--color-blanco); color: var(--color-negro); font-size: 0.95rem; outline: none; }
+.public-app-body .form-input:focus { border-color: var(--color-rojo); }
+
+/* BÚSQUEDA Y FILTROS */
+.public-app-body .search-container { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050; display: flex; flex-direction: column; align-items: center; width: 90%; max-width: 850px; }
+.public-app-body .unified-search-bar { background: var(--color-blanco); opacity: 0.98; backdrop-filter: blur(10px); border-radius: 40px; box-shadow: var(--sombra-flat); border: 1px solid var(--color-gris-borde); display: flex; align-items: center; padding: 8px 12px; width: 100%; transition: all 0.3s; }
+.public-app-body .search-field { flex: 1; display: flex; flex-direction: column; padding: 4px 15px; border-right: 1px solid var(--color-gris-borde); }
+.public-app-body .search-label { font-size: 0.75rem; font-weight: 700; color: var(--color-negro); margin-bottom: 2px; text-transform: uppercase; }
+.public-app-body .search-select { border: none; background: transparent; font-size: 0.95rem; color: var(--color-gris-texto); outline: none; cursor: pointer; width: 100%; font-weight: 500; appearance: none; }
+.public-app-body .btn-more-filters { background: var(--color-gris-fondo); border: 1px solid var(--color-gris-borde); border-radius: 30px; padding: 10px 20px; font-weight: 600; font-size: 0.9rem; color: var(--color-negro); cursor: pointer; display: flex; align-items: center; gap: 8px; margin-left: 10px; }
+.public-app-body .expanded-filters { position: absolute; top: calc(100% + 10px); background: var(--color-blanco); border-radius: var(--border-radius); box-shadow: var(--sombra-hover); border: 1px solid var(--color-gris-borde); padding: 25px; width: 100%; display: none; grid-template-columns: 1fr 1fr; gap: 25px; animation: slideDown 0.3s ease; }
+.public-app-body .expanded-filters.active { display: grid; }
+.public-app-body .price-inputs { display: flex; gap: 10px; align-items: center; }
+.public-app-body .amenities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.public-app-body .checkbox-lbl { display: flex; align-items: center; gap: 8px; font-size: 0.9rem; color: var(--color-gris-texto); cursor: pointer; }
+
+/* CONTENEDOR APP Y VISTAS */
+.public-app-body .app-container { flex: 1; position: relative; overflow: hidden; display: flex; }
+.public-app-body .view { display: none; width: 100%; height: 100%; }
+.public-app-body .view.active { display: block; animation: fadeIn 0.3s ease-out; }
+.public-app-body .view-scrollable { overflow-y: auto; background-color: var(--color-gris-fondo); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* MAPA Y BOTONES DE ZONA */
+.public-app-body #view-map { position: relative; }
+.public-app-body .btn-search-area, .public-app-body .btn-clear-area { position: absolute; top: 90px; left: 50%; transform: translateX(-50%); z-index: 1000; background: var(--color-negro); color: white; padding: 10px 20px; border-radius: 20px; border: none; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.3); cursor: pointer; display: flex; align-items: center; gap: 8px; animation: fadeIn 0.3s; }
+.public-app-body .btn-clear-area { background: var(--color-negro); }
+.custom-marker-icon { color: white; border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 12px rgba(0,0,0,0.3); text-align: center; line-height: 32px; font-size: 14px; transition: all 0.3s; }
+.marker-Venta { background-color: #D32F2F; } .marker-AlquilerAnual { background-color: #1976D2; } .marker-AlquilerTemporario { background-color: #F57C00; } .marker-Permuta { background-color: #7B1FA2; }
+path.leaflet-interactive { cursor: pointer !important; }
+
+/* SIDEBAR DEL MAPA */
+.public-app-body .property-sidebar { position: absolute; top: 20px; right: -420px; width: 400px; height: auto; max-height: calc(100% - 40px); background: var(--color-blanco); border-radius: var(--border-radius); box-shadow: var(--sombra-hover); z-index: 1000; transition: right 0.3s ease; display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--color-gris-borde); }
+.public-app-body .property-sidebar.active { right: 20px; }
+.public-app-body .sidebar-header-img { position: relative; height: 240px; width: 100%; background: var(--color-gris-fondo); }
+.public-app-body .sidebar-header-img img { width: 100%; height: 100%; object-fit: cover; }
+.public-app-body .sidebar-actions { position: absolute; top: 15px; right: 15px; display: flex; gap: 10px; z-index: 10; }
+.public-app-body .close-sidebar, .public-app-body .btn-fav { background: var(--color-blanco); border: none; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); color: var(--color-negro); font-size: 1.1rem;}
+.public-app-body .btn-fav { color: var(--color-gris-texto); }
+.public-app-body .btn-fav.active { color: var(--color-fav); }
+.public-app-body .badge-type { position: absolute; bottom: -15px; left: 20px; background: var(--color-rojo); color: #fff; padding: 6px 16px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; border: 2px solid var(--color-blanco); }
+.public-app-body .sidebar-content { padding: 35px 25px 25px; flex: 1; overflow-y: auto; display: flex; flex-direction: column; }
+.public-app-body .prop-zone { font-size: 0.8rem; color: var(--color-gris-texto); font-weight: 600; margin-bottom: 5px; }
+.public-app-body .prop-title { font-size: 1.35rem; font-weight: 700; color: var(--color-negro); margin-bottom: 8px;}
+.public-app-body .prop-price { font-size: 1.25rem; color: var(--color-negro-claro); font-weight: 600; margin-bottom: 20px; }
+.public-app-body .sidebar-feats { display: flex; gap: 15px; margin-bottom: 20px; color: var(--color-gris-texto); font-weight: 500; }
+.public-app-body .prop-desc-summary { font-size: 0.95rem; color: var(--color-negro-claro); line-height: 1.5; margin-bottom: 25px; background: var(--color-gris-fondo); padding: 15px; border-radius: 12px; border: 1px solid var(--color-gris-borde); }
+.public-app-body .ai-badge { display: inline-flex; align-items: center; gap: 6px; background: linear-gradient(135deg, #FF3366, #FF9933); color: white; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px; }
+.public-app-body .btn-whatsapp { background-color: var(--color-whatsapp); color: #fff; width: 100%; margin-bottom: 12px; padding: 14px; font-size: 1rem; border-radius: 8px; display:flex; justify-content:center; align-items:center; gap:8px; text-decoration:none; font-weight: 600;}
+.public-app-body .btn-details + .btn-details { margin-top: 12px; }
+.public-app-body .btn-details { background-color: var(--color-blanco); color: var(--color-rojo); border: 1px solid var(--color-rojo); width: 100%; padding: 14px; font-size: 1rem; font-weight: 600; border-radius: 8px; cursor: pointer;}
+
+.public-app-body .btn-volver { background: transparent; border: none; color: var(--color-negro-claro); font-weight: 600; cursor: pointer; font-size: 1rem; padding: 6px 4px; }
+.public-app-body .btn-volver:hover { color: var(--color-rojo); }
+
+/* LISTADO Y TARJETAS CON CARRUSEL */
+.public-app-body .list-container { max-width: 1280px; margin: 0 auto; padding: 120px 20px 90px; }
+.public-app-body .properties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.public-app-body .empty-state { text-align: center; padding: 60px 20px; grid-column: 1 / -1; border-radius: var(--border-radius); border: 1px dashed var(--color-gris-borde); color: var(--color-gris-texto);}
+.public-app-body .card { padding: 0; margin-bottom: 0; background: var(--color-blanco); border-radius: var(--border-radius); overflow: hidden; box-shadow: var(--sombra-flat); cursor: pointer; border: 1px solid var(--color-gris-borde); display: flex; flex-direction: column; position: relative; transition: transform 0.2s, box-shadow 0.2s; }
+.public-app-body .card:hover { transform: translateY(-3px); box-shadow: var(--sombra-hover); }
+.public-app-body .card-img-box { position: relative; width: 100%; height: 240px; background: var(--color-gris-fondo); }
+.public-app-body .card-img-box img { width: 100%; height: 100%; object-fit: cover; }
+.public-app-body .card-badge { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); color: white; padding: 6px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; }
+.public-app-body .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--color-blanco); opacity: 0.8; border: none; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 5; color: var(--color-negro); box-shadow: 0 2px 8px rgba(0,0,0,0.2); transition: opacity 0.2s; }
+.public-app-body .carousel-btn:hover { opacity: 1; }
+.public-app-body .carousel-btn.left { left: 10px; }
+.public-app-body .carousel-btn.right { right: 10px; }
+.public-app-body .carousel-indicators { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 5px; z-index: 5;}
+.public-app-body .carousel-indicators span { display: block; width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+.public-app-body .carousel-indicators span.active { background: white; transform: scale(1.2); }
+.public-app-body .card-info { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+.public-app-body .card-zone { font-size: 0.8rem; color: var(--color-gris-texto); font-weight: 600; margin-bottom: 5px; }
+.public-app-body .card-price { font-size: 1.5rem; font-weight: 700; color: var(--color-negro); margin-bottom: 8px;}
+.public-app-body .card-title { font-size: 1.05rem; font-weight: 600; color: var(--color-negro-claro); margin-bottom: 15px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;}
+.public-app-body .card-features { display: flex; flex-wrap: wrap; gap: 8px 15px; font-size: 0.9rem; color: var(--color-gris-texto); border-top: 1px solid var(--color-gris-borde); padding-top: 15px; margin-top: auto; }
+
+/* VISTA DETALLE Y FORMULARIO */
+.public-app-body .detail-wrapper { max-width: 1180px; margin: 30px auto; padding: 0 20px 100px; }
+.public-app-body .ml-layout { display: flex; gap: 25px; align-items: flex-start; }
+.public-app-body .ml-left { flex: 1; background: var(--color-blanco); border-radius: var(--border-radius); border: 1px solid var(--color-gris-borde); overflow: hidden; }
+.public-app-body .ml-right { width: 400px; background: var(--color-blanco); border-radius: var(--border-radius); padding: 35px; border: 1px solid var(--color-gris-borde); position: sticky; top: 20px; }
+.public-app-body .ml-gallery { display: flex; height: 500px; padding: 20px; }
+.public-app-body .ml-thumbs { width: 70px; display: flex; flex-direction: column; gap: 12px; margin-right: 20px; overflow-y: auto; }
+.public-app-body .ml-thumb-img { width: 60px; height: 60px; border-radius: 8px; cursor: pointer; object-fit: cover; border: 2px solid transparent;}
+.public-app-body .ml-thumb-img.active { border-color: var(--color-rojo); }
+.public-app-body .ml-main-img-box { flex: 1; display: flex; align-items: center; justify-content: center; background: var(--color-gris-fondo); border-radius: 8px;}
+.public-app-body .ml-main-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.public-app-body .badge-amenity { padding: 8px 16px; background: var(--color-gris-fondo); border-radius: 20px; font-size: 0.9rem; border: 1px solid var(--color-gris-borde); color: var(--color-negro-claro); }
+.public-app-body .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 35px; font-weight: 500; color: var(--color-negro-claro); }
+.public-app-body .detail-grid i { color: var(--color-gris-texto); width: 25px; }
+.public-app-body .btn-whatsapp-large { background: var(--color-whatsapp); color: white; padding: 18px; border-radius: 8px; display: flex; justify-content: center; font-weight: 600; text-decoration: none; margin-bottom: 30px; }
+.public-app-body .contact-form-box { background: var(--color-gris-fondo); padding: 20px; border-radius: 12px; border: 1px solid var(--color-gris-borde); }
+
+/* ABOUT TEXT */
+.public-app-body .about-text { color: var(--color-negro-claro); font-size: 1.05rem; line-height: 1.8; }
+
+/* MODAL LOGIN */
+.public-app-body .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: none; justify-content: center; align-items: center; z-index: 9999; }
+.public-app-body .modal-overlay.active { display: flex; }
+.public-app-body .login-box { background: var(--color-blanco); width: 100%; max-width: 420px; border-radius: var(--border-radius); padding: 40px; position: relative; text-align: center; border: 1px solid var(--color-gris-borde); box-shadow: var(--sombra-hover); }
+.public-app-body .btn-close-modal { position: absolute; top: 15px; right: 15px; background: transparent; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-gris-texto); }
+
+/* ELEMENTOS NUEVOS (en escritorio se ven igual que antes) */
+.public-app-body .ml-desc-box { padding: 40px; border-top: 1px solid var(--color-gris-borde); }
+.public-app-body .detail-price { font-size: 1.9rem; font-weight: 700; line-height: 1.15; margin-bottom: 30px; color: var(--color-negro); text-wrap: balance; }
+.public-app-body .price-inputs .form-input { min-width: 0; }
+.public-app-body .price-inputs select.search-select.form-input { border: 1px solid var(--color-gris-borde); appearance: auto; padding: 12px 10px; }
+.public-app-body .price-currency { width: auto; flex: 0 0 auto; cursor: pointer; }
+.public-app-body .form-error { background: rgba(211,47,47,0.08); border: 1px solid var(--color-rojo); color: var(--color-rojo); border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; text-align: left; margin: -5px 0 15px; line-height: 1.4; }
+.public-app-body .btn-negro:disabled { opacity: 0.6; cursor: wait; }
+.public-app-body .toast-aviso { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 10050; background: var(--color-negro); color: var(--color-blanco); padding: 12px 20px; border-radius: 30px; font-size: 0.9rem; font-weight: 500; box-shadow: var(--sombra-hover); max-width: min(92vw, 460px); text-align: center; animation: fadeIn 0.25s ease-out; }
+.public-app-body .estado-carga { position: fixed; left: 50%; top: 55%; transform: translate(-50%, -50%); z-index: 1040; background: var(--color-blanco); border: 1px solid var(--color-gris-borde); border-radius: var(--border-radius); box-shadow: var(--sombra-hover); padding: 22px 28px; text-align: center; max-width: min(88vw, 380px); color: var(--color-negro-claro); }
+.public-app-body .estado-carga p { margin: 0 0 14px; line-height: 1.5; }
+.public-app-body .estado-carga p:last-child { margin: 0; }
+.public-app-body .mobile-nav { display: none; }
+.public-app-body .btn-fav:focus-visible, .public-app-body .card:focus-visible, .public-app-body .nav-btn:focus-visible,
+.public-app-body .btn:focus-visible, .public-app-body .carousel-btn:focus-visible { outline: 2px solid var(--color-rojo); outline-offset: 2px; }
+/* el corazón de la tarjeta quedaba medio tapado por la foto */
+.public-app-body .card > .btn-fav { z-index: 6; }
+.public-app-body .btn-whatsapp-large { gap: 8px; align-items: center; }
+@keyframes sheetUp { from { transform: translateY(100%); } to { transform: none; } }
+
+/* ═════════ TABLETS Y CELULARES HORIZONTALES (769–1100 px): la barra superior se compacta ═════════ */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .public-app-body .topbar { padding: 0 16px; }
+    .public-app-body .topbar-left { width: auto; }
+    .public-app-body .brand-title { display: none; }
+    .public-app-body .topbar-right { width: auto; }
+    .public-app-body .nav-btn { padding: 10px 14px; white-space: nowrap; }
+}
+
+/* ═════════ CELULARES Y TABLETS CHICAS (el escritorio no cambia) ═════════ */
+@media (max-width: 768px) {
+    .public-app-body { --topbar-height: 58px; height: 100vh; height: 100dvh; width: 100%; }
+    .public-app-body .app-container { min-height: 0; }
+
+    /* Barra superior */
+    .public-app-body .topbar { padding: 0 14px; }
+    .public-app-body .topbar-left { width: auto; gap: 10px; }
+    .public-app-body .topbar-left img.topbar-logo { height: 40px; }
+    .public-app-body .topbar-center, .public-app-body .brand-title { display: none; }
+    .public-app-body .topbar-right { width: auto; gap: 10px !important; }
+    .public-app-body .topbar-right .btn { padding: 9px 14px; font-size: 0.9rem; }
+
+    /* Navegación inferior */
+    .public-app-body .mobile-nav { display: flex; flex: none; background: var(--color-blanco); border-top: 1px solid var(--color-gris-borde); padding-bottom: env(safe-area-inset-bottom); z-index: 1100; }
+    .public-app-body .mobile-nav button { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 8px 2px 7px; min-height: 56px; background: transparent; border: none; color: var(--color-gris-texto); font-size: 0.68rem; font-weight: 600; cursor: pointer; font-family: inherit; }
+    .public-app-body .mobile-nav button i { font-size: 1.2rem; }
+    .public-app-body .mobile-nav button.active { color: var(--color-rojo); }
+
+    /* Buscador compacto */
+    .public-app-body .search-container { top: 10px; width: calc(100% - 20px); }
+    .public-app-body .unified-search-bar { flex-direction: row; gap: 0; border-radius: 18px; padding: 6px 6px 6px 4px; }
+    .public-app-body .search-field { flex: 1 1 0; min-width: 0; width: auto; padding: 2px 8px; border-right: 1px solid var(--color-gris-borde); border-bottom: none; }
+    .public-app-body .search-label { font-size: 0.62rem; }
+    .public-app-body .search-select { font-size: 16px; text-overflow: ellipsis; padding: 0; }
+    .public-app-body .btn-more-filters { margin-left: 6px; padding: 0; width: 42px; height: 42px; justify-content: center; font-size: 0; flex: none; }
+    .public-app-body .btn-more-filters i { font-size: 1.05rem; }
+    .public-app-body .expanded-filters { grid-template-columns: 1fr; gap: 18px; padding: 18px; max-height: calc(100dvh - var(--topbar-height) - 160px); overflow-y: auto; }
+    .public-app-body .expanded-filters .form-input { font-size: 16px; }
+    .public-app-body .filters-actions .btn, .public-app-body .filters-actions .btn-rojo { min-height: 44px; }
+
+    /* Listado y tarjetas */
+    .public-app-body .list-container { padding: 92px 14px 24px; }
+    .public-app-body .properties-grid { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .public-app-body .card { padding: 0; margin-bottom: 0; }
+    .public-app-body .card > .btn-fav { top: 10px !important; right: 10px !important; }
+    .public-app-body .card-img-box { height: 210px; }
+    .public-app-body .card-info { padding: 16px; }
+    .public-app-body .card-price { font-size: 1.35rem; }
+    .public-app-body .card-features > span:first-child:has(.fa-hotel) { flex-basis: 100%; }
+    .public-app-body .carousel-btn { width: 38px; height: 38px; opacity: 0.9; }
+    .public-app-body .btn-fav, .public-app-body .close-sidebar { width: 40px; height: 40px; }
+
+    /* Ficha lateral: hoja desde abajo */
+    .public-app-body .property-sidebar { left: 0; right: 0; top: auto; bottom: 0; width: auto; height: auto; max-height: 66%; border-radius: 18px 18px 0 0; border-bottom: none; transform: translateY(110%); transition: transform 0.3s ease; }
+    .public-app-body .property-sidebar.active { right: 0; transform: none; animation: sheetUp 0.3s ease-out; }
+    .public-app-body .sidebar-header-img { height: 150px; flex: none; }
+    .public-app-body .sidebar-content { padding: 26px 18px 18px; }
+    .public-app-body .prop-title { font-size: 1.15rem; }
+    .public-app-body .prop-price { margin-bottom: 14px; }
+    .public-app-body .sidebar-feats { margin-bottom: 14px; flex-wrap: wrap; }
+    .public-app-body .prop-desc-summary { margin-bottom: 16px; padding: 12px; font-size: 0.9rem; }
+    .public-app-body .btn-whatsapp, .public-app-body .btn-details { padding: 13px; }
+    .public-app-body .btn-details + .btn-details { margin-top: 8px; }
+    .public-app-body .leaflet-bottom.leaflet-right { margin-bottom: 4px; }
+
+    /* Detalle */
+    .public-app-body .detail-wrapper { margin: 12px auto; padding: 0 12px 24px; }
+    .public-app-body .ml-layout { flex-direction: column; gap: 14px; }
+    .public-app-body .ml-left { display: contents; }
+    .public-app-body .ml-gallery { order: 1; flex-direction: column-reverse; height: auto; padding: 12px; background: var(--color-blanco); border: 1px solid var(--color-gris-borde); border-radius: var(--border-radius); }
+    .public-app-body .ml-main-img-box { flex: none; height: 250px; }
+    .public-app-body .ml-thumbs { width: 100%; flex-direction: row; margin: 10px 0 0; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+    .public-app-body .ml-thumb-img { flex: none; width: 56px; height: 56px; }
+    .public-app-body .ml-right { order: 2; width: 100%; position: static; padding: 20px; }
+    .public-app-body .ml-desc-box { order: 3; padding: 20px; background: var(--color-blanco); border: 1px solid var(--color-gris-borde); border-radius: var(--border-radius); }
+    .public-app-body .detail-price { font-size: 1.7rem; margin-bottom: 22px; }
+    .public-app-body .detail-grid { gap: 12px; margin-bottom: 22px; }
+    .public-app-body .btn-whatsapp-large { margin-bottom: 18px; padding: 15px; }
+
+    /* Acceso y mensajes */
+    .public-app-body .modal-overlay { padding: 12px; }
+    .public-app-body .login-box { padding: 26px 20px; max-height: 94dvh; overflow-y: auto; }
+    .public-app-body .login-box input { font-size: 16px !important; }
+    .public-app-body .toast-aviso { bottom: 76px; }
+    .public-app-body .estado-carga { top: 52%; }
+    .public-app-body .about-text { font-size: 1rem; }
+}
+@media (max-width: 380px) {
+    .public-app-body .search-label { font-size: 0.58rem; }
+    .public-app-body .search-field { padding: 2px 5px; }
+    .public-app-body .search-select { font-size: 14px; }
+    .public-app-body .btn-more-filters { width: 36px; height: 36px; margin-left: 4px; }
+    .public-app-body .topbar-right .btn { padding: 8px 10px; }
+}

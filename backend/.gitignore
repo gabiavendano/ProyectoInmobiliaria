@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Archivos subidos por los usuarios (fotos / PDF): no van a git, se respaldan aparte ###
+uploads/

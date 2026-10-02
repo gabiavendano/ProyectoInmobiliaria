@@ -1,0 +1,202 @@
+﻿"Folder","Title","Priority","Precondition","Steps","Expected result"
+"01 Acceso y sesión","Login correcto como ADMIN","Alta","Usuario ADMIN existente","1. Abrir el sitio y entrar a Acceso agentes
+2. Ingresar usuario y contraseña válidos
+3. Presionar Ingresar","Se abre el panel general con el nombre y las iniciales del usuario en la barra superior"
+"01 Acceso y sesión","Login correcto como AGENTE (mismos privilegios que ADMIN)","Alta","Usuario AGENTE existente","1. Iniciar sesión con el usuario AGENTE
+2. Recorrer Propiedades, Contratos y Finanzas","El AGENTE accede a las mismas secciones que el ADMIN"
+"01 Acceso y sesión","Login con contraseña incorrecta","Alta","Usuario existente","1. Ingresar usuario válido con contraseña errónea
+2. Presionar Ingresar","Muestra mensaje de credenciales inválidas y no inicia sesión"
+"01 Acceso y sesión","Login con campos vacíos","Media","-","1. Dejar usuario y contraseña vacíos
+2. Presionar Ingresar","No inicia sesión y avisa que faltan datos"
+"01 Acceso y sesión","La sesión se mantiene al recargar la página","Alta","Sesión iniciada","1. Presionar F5 en el panel","Sigue dentro del panel sin pedir login"
+"01 Acceso y sesión","Cerrar sesión","Alta","Sesión iniciada","1. Abrir el menú del usuario
+2. Elegir Cerrar sesión","Vuelve a la pantalla pública; al volver al panel pide login nuevamente"
+"01 Acceso y sesión","Cookie de sesión HttpOnly","Alta","Sesión iniciada","1. Abrir las herramientas del navegador > Aplicación > Cookies
+2. Buscar inmobiliaria_sesion
+3. Ejecutar document.cookie en la consola","La cookie existe marcada HttpOnly y no es visible desde document.cookie"
+"01 Acceso y sesión","Petición sin sesión es rechazada","Alta","Sesión cerrada","1. Abrir en el navegador una URL protegida de la API, por ejemplo /api/contratos","Responde 401/403 y no devuelve datos"
+"01 Acceso y sesión","Defensa CSRF: petición de otro origen","Media","Sesión iniciada","1. Desde una página de otro origen intentar un POST a la API con la cookie","El backend rechaza la petición (origen no confiable)"
+"01 Acceso y sesión","Rutas del panel protegidas","Media","Sesión cerrada","1. Intentar entrar directamente a una sección del panel","Redirige a la pantalla pública o de login"
+"02 Sitio público y mapa interactivo","El mapa muestra las propiedades disponibles","Alta","Propiedades cargadas y disponibles","1. Abrir el sitio público","Aparecen marcadores en el mapa para las propiedades con ubicación"
+"02 Sitio público y mapa interactivo","Filtrar por tipo de operación (Venta/Alquiler)","Alta","Propiedades de ambos tipos","1. Abrir Filtros
+2. Elegir Alquiler","Solo quedan visibles las propiedades en alquiler, en mapa y listado"
+"02 Sitio público y mapa interactivo","Filtrar por precio mínimo y máximo","Alta","Propiedades con distintos precios","1. Abrir Más filtros
+2. Elegir moneda
+3. Cargar precio mínimo y máximo","Se muestran solo propiedades dentro del rango en esa moneda"
+"02 Sitio público y mapa interactivo","Filtro de moneda con U$S, € y $","Media","Propiedades en las tres monedas","1. Abrir Más filtros
+2. Desplegar el selector de moneda","Las opciones son U$S, € y $, y cada una filtra correctamente"
+"02 Sitio público y mapa interactivo","Filtrar por tipo de inmueble y zona","Media","Propiedades de varios tipos","1. Aplicar el filtro de tipo
+2. Aplicar el filtro de zona","El resultado coincide con los filtros combinados"
+"02 Sitio público y mapa interactivo","Filtros sin resultados","Media","-","1. Aplicar filtros que no coincidan con ninguna propiedad","Muestra un mensaje de sin resultados claro, sin errores"
+"02 Sitio público y mapa interactivo","Cambiar entre vista Mapa y Listado","Media","-","1. Presionar Listado
+2. Presionar Mapa","Cambia de vista conservando los filtros"
+"02 Sitio público y mapa interactivo","Tarjeta del listado: foto sin marco y datos alineados","Baja","-","1. Abrir el listado","La foto ocupa toda la tarjeta, sin marco blanco interno; precio y título en el mismo orden en todas las tarjetas"
+"02 Sitio público y mapa interactivo","Ver el detalle de una propiedad","Alta","-","1. Presionar Ver Detalles en una tarjeta","Muestra fotos, precio en negrita, datos y ubicación"
+"02 Sitio público y mapa interactivo","Botón Volver del detalle","Baja","Detalle abierto","1. Presionar Volver","Regresa al listado o mapa sin perder los filtros"
+"02 Sitio público y mapa interactivo","Enviar consulta sin estar registrado","Media","Sin sesión de cliente","1. En una ficha presionar Enviar consulta","Pide iniciar sesión o registrarse antes de enviar"
+"02 Sitio público y mapa interactivo","Enviar consulta como cliente registrado","Alta","Cliente registrado con sesión","1. En una ficha presionar Enviar consulta
+2. Completar el mensaje
+3. Enviar","Se confirma el envío y la consulta aparece en Leads Web del panel"
+"02 Sitio público y mapa interactivo","Botón de WhatsApp","Media","-","1. Presionar el botón de WhatsApp de una ficha","Abre WhatsApp con el número de la inmobiliaria y el mensaje de la propiedad"
+"02 Sitio público y mapa interactivo","Marcar y quitar favoritos","Baja","Cliente con sesión","1. Presionar el corazón en una tarjeta
+2. Volver a presionarlo","La propiedad se agrega y luego se quita de favoritos"
+"02 Sitio público y mapa interactivo","Complejos: unidades visibles","Media","Complejo con unidades","1. Abrir un complejo","Se listan las unidades con su precio y estado"
+"02 Sitio público y mapa interactivo","Menú: nombre Nosotros","Baja","-","1. Mirar el menú en escritorio y en celular","El nombre es el mismo en ambos tamaños"
+"02 Sitio público y mapa interactivo","Sitio público en celular","Alta","-","1. Abrir el sitio en un teléfono o a 390 px de ancho","Sin scroll horizontal; botones y tarjetas legibles y tocables"
+"03 Panel General","Tarjetas de resumen","Alta","Datos cargados","1. Entrar al Panel General","Se ven 4 tarjetas en una fila (escritorio): propiedades disponibles, operaciones activas, consultas nuevas y clientes registrados, con valores correctos"
+"03 Panel General","Tarjetas en pantallas chicas","Baja","-","1. Reducir el ancho de la ventana a 1000 px y luego a 390 px","Pasan a 2 columnas y luego a 1 columna, sin superponerse"
+"03 Panel General","Tarjeta de consultas nuevas abre Leads","Media","-","1. Presionar la tarjeta Consultas nuevas","Abre la sección Leads Web"
+"03 Panel General","Accesos rápidos","Media","-","1. Presionar Nueva propiedad, Nuevo cliente, Nuevo contrato y Registrar movimiento","Cada botón abre el formulario correspondiente"
+"03 Panel General","Requiere atención","Alta","Hay consultas sin responder, vencimientos cercanos o cobros atrasados","1. Mirar el bloque Requiere atención","Lista cada alerta; sin alertas muestra el mensaje Todo al día"
+"03 Panel General","Finanzas del mes por moneda","Alta","Movimientos en ARS, USD y EUR","1. Presionar Pesos, Dólares y Euros","Los importes cambian por moneda y nunca se mezclan; el símbolo es $, US$ y €"
+"03 Panel General","Gráfico de ingresos y egresos","Media","Movimientos completados","1. Mirar el gráfico
+2. Presionar Ver como tabla","El gráfico coincide con la tabla y solo cuenta movimientos completados"
+"03 Panel General","Gráfico sin datos","Baja","Mes sin movimientos","1. Abrir el panel","Muestra un mensaje de sin datos, sin errores"
+"03 Panel General","Cartera de propiedades","Baja","-","1. Bajar hasta Cartera de propiedades","Muestra el total y el detalle por estado"
+"04 Leads Web","Listar consultas nuevas","Alta","Consulta enviada desde el sitio","1. Abrir Leads Web","La consulta aparece con cliente, propiedad y fecha"
+"04 Leads Web","Filtrar consultas por estado","Media","Consultas en varios estados","1. Cambiar el selector de estado","La lista se filtra; el selector tiene el estilo de los demás campos"
+"04 Leads Web","Cambiar el estado de una consulta","Media","Consulta nueva","1. Marcarla como respondida","El estado cambia y el contador del panel baja"
+"04 Leads Web","Usuarios registrados en la web","Baja","Clientes registrados","1. Abrir la pestaña Usuarios registrados en la web","Lista los usuarios con el contador correcto"
+"05 Gestión de Clientes (Personas)","Alta de persona humana","Alta","-","1. Abrir Nuevo cliente
+2. Elegir Persona humana
+3. Completar nombre, apellido, DNI, domicilio
+4. Guardar Ficha","Se guarda y aparece en el listado"
+"05 Gestión de Clientes (Personas)","Alta de persona jurídica","Alta","-","1. Elegir Persona jurídica
+2. Completar razón social y CUIT
+3. Guardar Ficha","Se guarda y aparece en el listado"
+"05 Gestión de Clientes (Personas)","Validación de DNI y CUIT","Media","-","1. Ingresar un DNI con letras
+2. Ingresar un CUIT con menos de 11 dígitos
+3. Guardar","No guarda y muestra el error en el campo"
+"05 Gestión de Clientes (Personas)","Campos obligatorios","Media","-","1. Dejar el nombre vacío
+2. Guardar Ficha","Marca los obligatorios y no guarda"
+"05 Gestión de Clientes (Personas)","Botón Guardar Ficha en rojo","Baja","-","1. Abrir el formulario de persona","El botón es rojo, igual que en Propiedades"
+"05 Gestión de Clientes (Personas)","Editar una persona","Alta","Persona existente","1. Abrirla
+2. Cambiar el teléfono
+3. Guardar","El cambio queda guardado"
+"05 Gestión de Clientes (Personas)","Notas de la ficha","Media","Persona existente","1. Agregar una nota
+2. Recargar","La nota queda guardada con fecha"
+"05 Gestión de Clientes (Personas)","Enlace a situación crediticia (BCRA)","Baja","-","1. Presionar el enlace de situación crediticia","Abre la página del BCRA en una pestaña nueva"
+"05 Gestión de Clientes (Personas)","Buscar y filtrar personas","Media","Varias personas","1. Buscar por nombre y por DNI","Devuelve las coincidencias"
+"05 Gestión de Clientes (Personas)","Eliminar o desactivar persona con contratos","Media","Persona con contrato vigente","1. Intentar eliminarla","No permite borrar datos que rompan contratos y avisa el motivo"
+"06 Propiedades","Alta de propiedad en venta","Alta","Propietario existente","1. Abrir Nueva propiedad
+2. Completar título, propietario, precio, moneda y operación Venta
+3. Guardar Ficha","Se guarda; si el título queda vacío se arma solo"
+"06 Propiedades","Alta de propiedad en alquiler","Alta","Propietario existente","1. Elegir operación Alquiler
+2. Completar precio y moneda
+3. Guardar","Se guarda y aparece en el sitio público si está disponible"
+"06 Propiedades","Moneda de la propiedad: ARS, USD y EUR","Alta","-","1. Abrir el selector de moneda de la ficha","Se pueden elegir las tres monedas y el precio se muestra con su símbolo"
+"06 Propiedades","Crear un complejo con unidades","Alta","-","1. Activar Complejo
+2. Guardar la ficha
+3. Agregar dos unidades con precio y estado","El complejo muestra sus unidades; el precio del complejo se calcula según ellas"
+"06 Propiedades","Subir fotos","Alta","Propiedad existente","1. Subir 3 fotos
+2. Reordenar y marcar la principal","Las fotos se ven en la ficha y en el sitio público"
+"06 Propiedades","Foto en propiedad nueva sin guardar","Media","Ficha nueva","1. Subir una foto antes de guardar
+2. Guardar Ficha","La foto queda en espera y se sube al guardar"
+"06 Propiedades","Ubicación en el mapa","Alta","-","1. Escribir una dirección y buscar
+2. Mover el marcador","El marcador queda donde se indica y se guarda"
+"06 Propiedades","Dirección no encontrada","Baja","-","1. Buscar una dirección inexistente","Avisa que no se encontró y permite ubicar a mano"
+"06 Propiedades","Cambiar estado (Disponible, Reservada, Vendida/Alquilada)","Alta","Propiedad disponible","1. Cambiar el estado
+2. Guardar","El sitio público refleja el cambio"
+"06 Propiedades","Calendario de disponibilidad (temporarios)","Media","Propiedad de alquiler temporario","1. Bloquear fechas en el calendario","Las fechas bloqueadas no figuran como disponibles"
+"06 Propiedades","Eliminar o ocultar propiedad","Media","Propiedad existente","1. Eliminarla o marcarla no disponible","Deja de verse en el sitio público"
+"07 Operaciones y Contratos","Contrato de venta","Alta","Propiedad y personas cargadas","1. Elegir pestaña Venta
+2. Elegir propiedad (trae precio y moneda)
+3. Elegir comprador
+4. Guardar Operación","Se guarda con vendedor completado automáticamente"
+"07 Operaciones y Contratos","Contrato de alquiler anual","Alta","Propiedad en alquiler e inquilino","1. Elegir Alquiler Anual
+2. Completar canon, fechas, vencimiento, mora y administración
+3. Guardar","Se guarda y queda vigente"
+"07 Operaciones y Contratos","Contrato de alquiler temporario","Alta","-","1. Elegir Alq. Temporario
+2. Completar fechas y monto
+3. Guardar","Se guarda sin índice de ajuste (queda en Ninguno)"
+"07 Operaciones y Contratos","Permuta","Media","-","1. Elegir Permuta
+2. Cargar ambas partes y valores
+3. Guardar","Se guarda con ambas partes"
+"07 Operaciones y Contratos","Moneda de contrato: ARS, USD y EUR","Alta","-","1. Crear un contrato en cada moneda","Cada contrato conserva su moneda y se muestra con su símbolo"
+"07 Operaciones y Contratos","Ajuste solo en alquiler anual en pesos","Alta","-","1. Crear un anual en USD o EUR con índice IPC
+2. Guardar y reabrir","El ajuste queda en Ninguno para monedas extranjeras"
+"07 Operaciones y Contratos","Honorarios según Ley 9.445","Alta","-","1. Completar precio o canon
+2. Mirar Honorarios Profesionales","Calcula la escala automáticamente y permite cambiar el porcentaje o monto"
+"07 Operaciones y Contratos","Honorarios sin redondeo","Media","-","1. Cargar un monto que dé centavos","El honorario conserva los centavos"
+"07 Operaciones y Contratos","Co-corretaje","Media","-","1. Activar co-corretaje","El honorario se reparte en partes iguales"
+"07 Operaciones y Contratos","Enlace a facturar en ARCA","Baja","-","1. Presionar Facturar en ARCA (ex AFIP)","Abre la página de ARCA en una pestaña nueva"
+"07 Operaciones y Contratos","Garantes y documentos","Media","Contrato de alquiler","1. Agregar un garante
+2. Subir un documento","Quedan asociados al contrato"
+"07 Operaciones y Contratos","Listado de contratos y filtros","Media","Varios contratos","1. Filtrar por estado y tipo","La lista coincide con los filtros"
+"07 Operaciones y Contratos","Editar y finalizar un contrato","Alta","Contrato vigente","1. Cambiar una condición
+2. Finalizar el contrato","Los cambios se guardan y la propiedad vuelve a estar disponible según corresponda"
+"07 Operaciones y Contratos","Validaciones de fechas","Media","-","1. Poner fecha de fin anterior al inicio
+2. Guardar","No guarda y avisa"
+"08 Finanzas: Cobranza al inquilino","Cobro de alquiler completo","Alta","Contrato de alquiler vigente","1. Entrar a Cobranza Inquilino
+2. Elegir propiedad, unidad y mes
+3. Registrar cobro y generar recibo","Se registra el cobro, se genera el recibo PDF y el movimiento figura en Movimientos"
+"08 Finanzas: Cobranza al inquilino","Cobro parcial y saldo","Alta","Alquiler vigente","1. Cobrar un importe menor al alquiler
+2. Volver a cobrar el saldo","Muestra el saldo pendiente y al completarse el mes queda cerrado"
+"08 Finanzas: Cobranza al inquilino","Mora por pago atrasado","Alta","Pago posterior al vencimiento","1. Registrar cobro con fecha de pago posterior al vencimiento","Calcula la mora diaria y la suma al total del recibo"
+"08 Finanzas: Cobranza al inquilino","Mes ya cobrado bloquea nuevo cobro","Media","Mes cobrado completo","1. Intentar cobrar el mismo mes","El formulario queda bloqueado"
+"08 Finanzas: Cobranza al inquilino","Meses anteriores con saldo","Media","Meses sin cobrar","1. Abrir la cobranza","Lista los meses adeudados con su saldo"
+"08 Finanzas: Cobranza al inquilino","Cobrar otro concepto (servicio, expensa, otro)","Media","-","1. Elegir un concepto distinto de Alquiler
+2. Cobrar","Se registra con el concepto elegido"
+"08 Finanzas: Cobranza al inquilino","Recibo PDF","Alta","Cobro registrado","1. Abrir el recibo
+2. Imprimir o guardar","El PDF muestra número, importes, moneda y datos correctos"
+"08 Finanzas: Cobranza al inquilino","Anular un cobro","Alta","Cobro registrado","1. Anular el cobro indicando el motivo","Queda anulado, no suma en totales y se conserva el historial"
+"08 Finanzas: Cobranza al inquilino","Cobro en dólares o euros","Media","Contrato en moneda extranjera","1. Cobrar el alquiler","Los importes y el recibo usan la moneda del contrato"
+"08 Finanzas: Cobranza al inquilino","Recuadro de datos del contrato","Baja","Contrato con ajuste","1. Mirar el recuadro Datos del Contrato Activo","Muestra ajuste, próximo aumento, mora y administración con texto legible"
+"09 Finanzas: Calcular ajuste IPC / ICL","Botón visible solo con IPC o ICL","Alta","Contratos con y sin índice","1. Abrir la cobranza de cada uno","Solo los contratos con IPC o ICL muestran Calcular ajuste"
+"09 Finanzas: Calcular ajuste IPC / ICL","Resaltar el mes de ajuste","Media","Contrato con ajuste trimestral","1. Elegir un mes que toque ajustar","El botón se ve en rojo y aparece el aviso de actualizar índice"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: valores automáticos del INDEC","Alta","Conexión a internet","1. Presionar Calcular ajuste en un contrato IPC","Trae el índice inicial y final del INDEC y muestra coeficiente, aumento y alquiler propuesto"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: cálculo correcto","Alta","-","1. Con alquiler 100000 e índices 11700 y 12276,766
+2. Verificar el resultado","Coeficiente 1,049296 y alquiler propuesto 104929,62"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: cambiar los meses de referencia","Media","-","1. Cambiar mes inicial y final","Vuelve a consultar y recalcula"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: mes aún no publicado","Media","-","1. Elegir un mes futuro como final","Avisa que el INDEC no lo publicó y permite cargar a mano"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: sin conexión","Media","Bloquear el acceso a datos.gob.ar","1. Presionar Calcular ajuste","Avisa que no se pudo consultar y permite cargar los dos valores a mano"
+"09 Finanzas: Calcular ajuste IPC / ICL","IPC: mes inicial posterior al final","Baja","-","1. Poner mes inicial mayor al final","Avisa que el inicial debe ser anterior"
+"09 Finanzas: Calcular ajuste IPC / ICL","ICL: carga manual","Alta","Contrato con ICL","1. Presionar Calcular ajuste
+2. Cargar valor inicial y final del ICL","Calcula el coeficiente y el alquiler propuesto"
+"09 Finanzas: Calcular ajuste IPC / ICL","Usar este monto solo completa el campo","Alta","Cálculo realizado","1. Presionar Usar este monto","El campo Alquiler del mes toma el valor; el contrato no se modifica hasta registrar el cobro"
+"09 Finanzas: Calcular ajuste IPC / ICL","Cancelar no cambia nada","Media","-","1. Abrir el cálculo y presionar Cancelar","No cambia ningún dato"
+"09 Finanzas: Calcular ajuste IPC / ICL","Enlaces a INDEC y BCRA","Baja","-","1. Presionar el enlace de cada tipo de índice","Abre INDEC para IPC o BCRA para ICL en pestaña nueva"
+"09 Finanzas: Calcular ajuste IPC / ICL","Alquiler actual cero o vacío","Baja","-","1. Dejar el alquiler vacío","No muestra propuesta y deshabilita Usar este monto"
+"10 Finanzas: Rendiciones a propietarios","Generar rendición mensual","Alta","Cobros del mes registrados","1. Entrar a Propietarios y Rendiciones
+2. Elegir propietario, mes y moneda
+3. Ver vista previa
+4. Confirmar","Se genera con honorarios descontados y neto a transferir"
+"10 Finanzas: Rendiciones a propietarios","Rendición con gastos generales","Media","-","1. Agregar un gasto
+2. Generar","El gasto se descuenta del neto"
+"10 Finanzas: Rendiciones a propietarios","Marcar rendición transferida","Alta","Rendición pendiente","1. Presionar Marcar transferida","Estado cambia a Transferida y se registra el movimiento"
+"10 Finanzas: Rendiciones a propietarios","Transferencias parciales","Media","-","1. Registrar una transferencia parcial","Queda el saldo pendiente de transferir"
+"10 Finanzas: Rendiciones a propietarios","PDF de rendición","Media","-","1. Abrir el PDF","Detalle correcto de líneas, honorarios y neto"
+"10 Finanzas: Rendiciones a propietarios","Rendición por moneda","Media","Cobros en distintas monedas","1. Generar una rendición por cada moneda","No mezcla monedas"
+"11 Finanzas: Servicios y prorrateo","Cargar factura de servicio","Alta","Propiedad o complejo","1. Entrar a Carga Servicios / Prorrateo
+2. Cargar tipo, período, monto y vencimiento","La factura se registra"
+"11 Finanzas: Servicios y prorrateo","Prorrateo entre unidades","Alta","Complejo con unidades","1. Distribuir la factura entre unidades","Genera cargos por unidad que suman el total"
+"11 Finanzas: Servicios y prorrateo","Cargos pendientes se suman al cobro","Alta","Cargos generados","1. Abrir la cobranza del inquilino","Los cargos pendientes aparecen para cobrar"
+"11 Finanzas: Servicios y prorrateo","Marcar factura pagada","Media","Factura pendiente","1. Marcar pagada por la inmobiliaria o por el propietario","Estado actualizado según quién pagó"
+"12 Finanzas: Movimientos y alertas","Registrar movimiento manual (Ingreso y Egreso)","Alta","-","1. Presionar Manual o Nuevo movimiento
+2. Completar tipo, concepto, monto y moneda
+3. Guardar","Aparece en la lista y en los totales"
+"12 Finanzas: Movimientos y alertas","Transferencia entre cuentas","Media","-","1. Registrar una transferencia","Se refleja correctamente"
+"12 Finanzas: Movimientos y alertas","Filtrar movimientos","Media","Varios movimientos","1. Filtrar por mes, tipo, estado y buscar texto","El listado coincide con los filtros"
+"12 Finanzas: Movimientos y alertas","Anular movimiento","Alta","Movimiento existente","1. Anular","Pasa a Anulado y deja de sumar"
+"12 Finanzas: Movimientos y alertas","Totales separados por moneda","Alta","Movimientos en varias monedas","1. Mirar los totales","Cada moneda se suma por separado"
+"12 Finanzas: Movimientos y alertas","Alertas de deuda y ajuste","Media","Inquilino con deuda y contrato a ajustar","1. Abrir Finanzas y Cobros","Se muestran los dos recuadros con el detalle"
+"12 Finanzas: Movimientos y alertas","Enlace ARCA en Finanzas","Baja","-","1. Presionar ARCA","Abre ARCA en pestaña nueva"
+"13 Accesibilidad y diseño","Modo oscuro","Media","-","1. Abrir el panel de accesibilidad
+2. Activar Modo oscuro
+3. Recorrer las secciones","Todo el panel es legible; el logo sigue sobre fondo blanco; las fotos no se invierten"
+"13 Accesibilidad y diseño","Alto contraste","Media","-","1. Activar alto contraste","Bordes y textos con contraste fuerte en todas las secciones"
+"13 Accesibilidad y diseño","Tamaño del texto","Media","-","1. Aumentar el tamaño del texto","El texto crece sin romper el diseño"
+"13 Accesibilidad y diseño","Las opciones se recuerdan","Baja","-","1. Activar una opción
+2. Recargar la página","La opción sigue activa"
+"13 Accesibilidad y diseño","Navegación con teclado","Media","-","1. Recorrer formularios con Tab
+2. Abrir y cerrar un modal con teclado","El foco es visible y el orden es lógico"
+"13 Accesibilidad y diseño","Paleta corporativa","Baja","-","1. Revisar visualmente las pantallas","Predominan rojo, blanco, negro y gris; azul solo en ARCA y verde solo en WhatsApp (puntos pendientes de unificar en algunos paneles)"
+"13 Accesibilidad y diseño","Diseño en celular","Alta","-","1. Abrir el panel a 390 px de ancho","Sin scroll horizontal; menú accesible; formularios usables"
+"13 Accesibilidad y diseño","Subtítulos de formulario","Baja","-","1. Abrir Contratos y Clientes","Los subtítulos son legibles y no se pisan con los campos"
+"14 Seguridad y datos","Datos sensibles no aparecen en el sitio público","Alta","-","1. Revisar la API pública de propiedades","No expone datos personales de propietarios ni clientes"
+"14 Seguridad y datos","Acceso a datos privados sin sesión","Alta","Sesión cerrada","1. Probar /api/personas, /api/contratos, /api/finanzas","Todas responden 401/403"
+"14 Seguridad y datos","Cambio de contraseña del administrador","Alta","-","1. Cambiar la contraseña por defecto del ADMIN
+2. Cerrar sesión y entrar con la nueva","La anterior deja de funcionar"
+"14 Seguridad y datos","Restricción de monedas en base de datos","Media","Backend recién actualizado","1. Reiniciar el backend
+2. Revisar el log","Aparece el mensaje de actualización de la restricción de moneda EUR y no hay errores"
+"14 Seguridad y datos","Pruebas automáticas del backend","Alta","Entorno con Maven","1. Ejecutar backend/verify.sh","Compila y todos los tests pasan"

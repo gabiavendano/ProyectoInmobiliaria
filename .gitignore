@@ -12,6 +12,8 @@ backend/src/main/resources/firebase-service-account.json
 **/firebase-service-account*.json
 .env
 .env.*
+!.env.example
+!**/.env.example
 *.pem
 
 # Sistema / IDE
@@ -24,4 +26,9 @@ backend/src/main/resources/firebase-service-account.json
 HELP.md
 gabi_src.tgz
 _backup_*.tgz
+bk_*.tgz
 gabi_*.tgz
+
+# Fotos y documentos subidos desde el panel (no van a GitHub)
+backend/uploads/
+backups/

@@ -1,0 +1,2 @@
+Archivos que ya no se usaban en la aplicación (ningún otro archivo los importaba).
+Se movieron acá en lugar de borrarlos, por si querés recuperar algo. Podés borrar esta carpeta.

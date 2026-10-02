@@ -1,0 +1,8 @@
+# Copiá este archivo como application-local.properties y completá tus valores.
+# application-local.properties está en .gitignore: no se sube a git.
+spring.datasource.username=postgres
+spring.datasource.password=CAMBIAR
+jwt.secret=CAMBIAR_por_una_cadena_aleatoria_de_48_caracteres_o_mas
+# Desarrollo sin HTTPS: la cookie de sesión no puede ser "secure"
+app.cookie.secure=false
+# app.seed.admin-password=UnaClaveFuerte123

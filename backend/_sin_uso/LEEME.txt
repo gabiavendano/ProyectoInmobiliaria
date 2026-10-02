@@ -1,0 +1,1 @@
+backend/_sin_uso: clases viejas de /api/documentos (reemplazadas por los endpoints de cada contrato/propiedad).

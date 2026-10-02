@@ -1,7 +1,8 @@
 {
-  "dependencies": {
-    "bootstrap": "^5.3.8",
-    "jspdf": "^4.2.1",
-    "jspdf-autotable": "^5.0.8"
-  }
+  "//": "ProyectoInmobiliaria V2 — Monorepo",
+  "//": "Backend: ./backend/ (Spring Boot + Maven)",
+  "//": "Frontend: ./frontend/ (React + Vite)",
+  "//": "No hay dependencias NPM a nivel raíz.",
+  "//": "Para ejecutar el backend: cd backend && mvn spring-boot:run",
+  "//": "Para ejecutar el frontend: cd frontend && npm run dev"
 }
